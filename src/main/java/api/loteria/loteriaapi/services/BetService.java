@@ -33,4 +33,14 @@ public class BetService {
         return new ResponseEntity<Bet>(betRepository.save(bet), HttpStatus.OK);
     }
 
+    public ResponseEntity<?> update(Bet bet){
+
+        if (!betRepository.existsById(bet.getId())){
+            response.setMessage("id doesn't exist!");
+            return new ResponseEntity<Response>(response, HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<Bet>(betRepository.save(bet), HttpStatus.CREATED);
+    }
+
 }
