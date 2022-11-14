@@ -43,4 +43,16 @@ public class BetService {
         return new ResponseEntity<Bet>(betRepository.save(bet), HttpStatus.CREATED);
     }
 
+    public ResponseEntity<?> delete(long id){
+
+        if (!betRepository.existsById(id)){
+            response.setMessage("id doesn't exist!");
+            return new ResponseEntity<Response>(response, HttpStatus.NOT_FOUND);
+        }
+        
+        betRepository.deleteById(id);
+        response.setMessage("Removed successfully!");
+        return new ResponseEntity<Response>(response, HttpStatus.OK);
+    }
+
 }
