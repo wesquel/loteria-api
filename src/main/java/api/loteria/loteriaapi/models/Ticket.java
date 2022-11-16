@@ -22,4 +22,6 @@ public class Ticket {
     @JoinColumn(name="bet_id", nullable = false)
     private Bet bet;
 
+    
+
 }
