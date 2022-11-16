@@ -26,7 +26,7 @@ public class BetService {
         
         System.out.println(bet.getMax() <= 0);
         if (bet.getMax() <= 0){
-            response.setMessage("O número maximo de valores deve ser maior que zero!");
+            response.setMessage("The maximum number of values must be greater than zero!");
             return new ResponseEntity<Response>(response, HttpStatus.BAD_REQUEST);
         }
 
