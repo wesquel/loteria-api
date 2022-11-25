@@ -1,58 +1,17 @@
 package api.loteria.loteriaapi.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-import api.loteria.loteriaapi.models.Bet;
-import api.loteria.loteriaapi.models.Response;
-import api.loteria.loteriaapi.repositories.BetRepository;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 
-@Service
-public class BetService {
-    
-    @Autowired
-    private BetRepository betRepository;
+import api.loteria.loteriaapi.dtos.responses.BetResponse;
+import api.loteria.loteriaapi.dtos.resquests.BetRequest;
 
-    @Autowired
-    private Response response;
-
-    public Iterable<Bet> getBets(){
-        return betRepository.findAll();
-    }
-
-    public ResponseEntity<?> create(Bet bet){
-        
-        System.out.println(bet.getMax() <= 0);
-        if (bet.getMax() <= 0){
-            response.setMessage("The maximum number of values must be greater than zero!");
-            return new ResponseEntity<Response>(response, HttpStatus.BAD_REQUEST);
-        }
-
-        return new ResponseEntity<Bet>(betRepository.save(bet), HttpStatus.OK);
-    }
-
-    public ResponseEntity<?> update(Bet bet){
-
-        if (!betRepository.existsById(bet.getId())){
-            response.setMessage("id doesn't exist!");
-            return new ResponseEntity<Response>(response, HttpStatus.NOT_FOUND);
-        }
-
-        return new ResponseEntity<Bet>(betRepository.save(bet), HttpStatus.CREATED);
-    }
-
-    public ResponseEntity<?> delete(long id){
-
-        if (!betRepository.existsById(id)){
-            response.setMessage("id doesn't exist!");
-            return new ResponseEntity<Response>(response, HttpStatus.NOT_FOUND);
-        }
-        
-        betRepository.deleteById(id);
-        response.setMessage("Removed successfully!");
-        return new ResponseEntity<Response>(response, HttpStatus.OK);
-    }
-
+public interface BetService {
+    List<BetResponse> list();
+    BetResponse save(BetRequest betRequest);
+    BetResponse update(Long id, BetRequest betRequest);
+    BetResponse delete(Long id);
+    BetResponse getBetById(Long id);
+    List<BetResponse> getBets();
 }

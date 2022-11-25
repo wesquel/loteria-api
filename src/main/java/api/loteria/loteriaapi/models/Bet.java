@@ -53,19 +53,23 @@ public class Bet {
     @Column(nullable = true)
     private List<Integer> raffleNumbers;
 
-    // maximum numbers accepted in the raffle
+    // maximum numbers accepted of bet
     @Column(nullable = false)
-    private int max;
+    private int totalNumbers;
+
+    // maximum numbers accepted in the raffle by Users
+    @Column(nullable = false)
+    private int maxNumbersByUsers;
 
     public void getNumbers(int quantity){
         int count = 0;
-        while (count <= quantity || count <= max){
+        while (count <= quantity || count <= totalNumbers){
             break;
         }
     }
 
     public int generateRandomNumber(){
-        return new Random().nextInt(this.max);
+        return new Random().nextInt(this.totalNumbers);
     }
 
 }
