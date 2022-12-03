@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,6 +57,16 @@ public class BetController {
     public BetResponse updateBetData(@PathVariable Long id,
                                              @RequestBody @Valid BetRequest betRequest){
         return betService.update(id, betRequest);
+    }
+
+    @ApiOperation(value = "Delete a student in the database")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "ok", response = BetResponse.class)
+    })
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public BetResponse deleteBet(@PathVariable Long id){
+        return betService.delete(id);
     }
 
 }
