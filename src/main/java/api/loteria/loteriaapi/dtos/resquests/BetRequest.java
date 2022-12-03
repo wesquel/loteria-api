@@ -2,11 +2,12 @@ package api.loteria.loteriaapi.dtos.resquests;
 
 import java.util.List;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import api.loteria.loteriaapi.models.Ticket;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,15 +19,13 @@ import lombok.Setter;
 @NoArgsConstructor
 public class BetRequest {
     
-    @NotNull
-    private int betId;
 
-    @NotNull
+    private int betId;
+    private List<Ticket> tickets;
     private List<Integer> raffleNumbers;
 
-    @NotBlank
+    @NotNull
     private int totalNumbers;
-    
-    @NotBlank
+    @NotNull
     private int maxNumbersByUsers;
 }

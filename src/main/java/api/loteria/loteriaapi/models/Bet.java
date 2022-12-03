@@ -61,15 +61,5 @@ public class Bet {
     @Column(nullable = false)
     private int maxNumbersByUsers;
 
-    public void getNumbers(int quantity){
-        int count = 0;
-        while (count <= quantity || count <= totalNumbers){
-            break;
-        }
-    }
-
-    public int generateRandomNumber(){
-        return new Random().nextInt(this.totalNumbers);
-    }
 
 }

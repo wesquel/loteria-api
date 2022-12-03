@@ -17,14 +17,13 @@ import api.loteria.loteriaapi.repositories.BetRepository;
 import api.loteria.loteriaapi.services.BetService;
 import lombok.AllArgsConstructor;
 
+
 @Service
+@AllArgsConstructor(onConstructor = @__(@Autowired))
+public class BetServiceMysql implements BetService {
 
-public class BetServiceMysql implements BetService{
-
-    private BetMapper betMapper;
-
-    @Autowired
     private BetRepository betRepository;
+    private BetMapper betMapper;
 
     @Override
     public List<BetResponse> list() {
@@ -34,7 +33,9 @@ public class BetServiceMysql implements BetService{
 
     @Override
     public BetResponse save(BetRequest betRequest) {
+        System.out.println(betRequest.getTotalNumbers());
         Bet bet = betMapper.betResquetToEntity(betRequest);
+        System.out.println(bet.getId());
         try {
             betRepository.save(bet);
         }catch(RuntimeException e){

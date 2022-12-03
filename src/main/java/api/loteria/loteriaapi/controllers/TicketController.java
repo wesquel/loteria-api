@@ -26,7 +26,8 @@ public class TicketController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody Ticket ticket) {        
+    public ResponseEntity<?> create(@RequestBody Ticket ticket) {
+        System.out.println(ticket.getChosenNumbers());        
         return ticketService.create(ticket);
     }
     

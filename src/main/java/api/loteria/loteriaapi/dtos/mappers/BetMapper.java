@@ -10,9 +10,11 @@ import api.loteria.loteriaapi.models.Bet;
 
 @Mapper(componentModel = "spring")
 public interface BetMapper {
-    @Mapping(target = "bet.id", source = "betId")
+
+    @Mapping(target="id", source="betId")
+    @Mapping(target="totalNumbers", source="betRequest.totalNumbers")
     Bet betResquetToEntity(BetRequest betRequest);
 
-    @Mapping(source = "bet.id", target = "betId")
+    @Mapping(target="id", source="id")
     BetResponse entityToBetResponse(Bet bet);
 }
