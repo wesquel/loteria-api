@@ -12,7 +12,6 @@ import api.loteria.loteriaapi.models.Bet;
 public interface BetMapper {
 
     @Mapping(target="id", source="betId")
-    @Mapping(target="totalNumbers", source="betRequest.totalNumbers")
     Bet betResquetToEntity(BetRequest betRequest);
 
     @Mapping(target="id", source="id")

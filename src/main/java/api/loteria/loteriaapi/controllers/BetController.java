@@ -6,7 +6,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -42,6 +44,18 @@ public class BetController {
     })
     public BetResponse create(@RequestBody @Valid BetRequest betRequest) {
         return betService.save(betRequest);
+    }
+
+    @ApiOperation(value = "Update a student in the database")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "ok", response = BetResponse.class)
+    })
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public BetResponse updateBetData(@PathVariable Long id,
+                                             @RequestBody @Valid BetRequest betRequest){
+        return betService.update(id, betRequest);
     }
 
 }

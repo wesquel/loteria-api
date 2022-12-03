@@ -48,6 +48,9 @@ public class BetServiceMysql implements BetService {
     public BetResponse update(Long id, BetRequest betRequest) {
         Bet bet = verifyIfExist(id);
         updateData(bet, betRequest);
+        System.out.println(bet.getId());
+        System.out.println(bet.getMaxNumbersByUsers());
+        System.out.println(bet.getTotalNumbers());
         betRepository.save(bet);
         return betMapper.entityToBetResponse(bet);
     }
