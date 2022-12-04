@@ -54,7 +54,7 @@ public class BetController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public BetResponse updateBetData(@PathVariable Long id,
+    public BetResponse update(@PathVariable Long id,
                                              @RequestBody @Valid BetRequest betRequest){
         return betService.update(id, betRequest);
     }
@@ -65,7 +65,7 @@ public class BetController {
     })
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public BetResponse deleteBet(@PathVariable Long id){
+    public BetResponse delete(@PathVariable Long id){
         return betService.delete(id);
     }
 
