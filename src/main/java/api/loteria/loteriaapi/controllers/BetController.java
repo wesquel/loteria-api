@@ -39,7 +39,7 @@ public class BetController {
     }
 
     @PostMapping
-    @ApiOperation(value = "Create a new student in the database")
+    @ApiOperation(value = "Create a new bet in the database")
     @ApiResponses({
             @ApiResponse(code = 201, message = "created", response = BetResponse.class)
     })
@@ -47,7 +47,7 @@ public class BetController {
         return betService.save(betRequest);
     }
 
-    @ApiOperation(value = "Update a student in the database")
+    @ApiOperation(value = "Update a bet in the database")
     @ApiResponses({
             @ApiResponse(code = 200, message = "ok", response = BetResponse.class)
     })
@@ -59,7 +59,7 @@ public class BetController {
         return betService.update(id, betRequest);
     }
 
-    @ApiOperation(value = "Delete a student in the database")
+    @ApiOperation(value = "Delete a bet in the database")
     @ApiResponses({
             @ApiResponse(code = 200, message = "ok", response = BetResponse.class)
     })
