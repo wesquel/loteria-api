@@ -2,7 +2,6 @@ package api.loteria.loteriaapi.dtos.resquests;
 
 import java.util.List;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -21,6 +20,6 @@ public class TicketRequest {
     
     @NotNull
     private long betId;
-    @NotBlank
+    @NotNull
     private List<Integer> chosenNumbers;
 }
