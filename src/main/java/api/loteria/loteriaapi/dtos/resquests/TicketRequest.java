@@ -19,7 +19,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class TicketRequest {
     private long ticketId;
-
+    
     @NotNull
     private long betId;
     @NotBlank
