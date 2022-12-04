@@ -14,6 +14,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.JavaType;
 
 import lombok.Data;
@@ -45,6 +46,7 @@ public class Bet {
     // Ticket of bet
     @OneToMany
     @JoinColumn(name="bet_id")
+    @JsonManagedReference
     private List<Ticket> tickets;
 
     // raffle numbers

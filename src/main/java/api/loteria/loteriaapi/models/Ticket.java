@@ -1,5 +1,6 @@
 package api.loteria.loteriaapi.models;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,12 +13,15 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.Type;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Data;
 
 
 @Data
 @Entity
-public class Ticket {
+public class Ticket implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +29,7 @@ public class Ticket {
 
     @ManyToOne
     @JoinColumn(name="bet_id", nullable = false)
+    @JsonBackReference
     private Bet bet;
 
     @Type(type = "json")
