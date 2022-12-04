@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 import api.loteria.loteriaapi.models.Ticket;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -5,17 +5,13 @@ import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import api.loteria.loteriaapi.dtos.mappers.TicketMapper;
 import api.loteria.loteriaapi.dtos.responses.TicketResponse;
 import api.loteria.loteriaapi.dtos.resquests.TicketRequest;
 import api.loteria.loteriaapi.models.Bet;
-import api.loteria.loteriaapi.models.Response;
 import api.loteria.loteriaapi.models.Ticket;
 import api.loteria.loteriaapi.repositories.BetRepository;
 import api.loteria.loteriaapi.repositories.TicketRepository;

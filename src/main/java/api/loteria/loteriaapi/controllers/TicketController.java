@@ -5,7 +5,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,12 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import api.loteria.loteriaapi.models.Ticket;
 import api.loteria.loteriaapi.dtos.responses.TicketResponse;
 import api.loteria.loteriaapi.dtos.resquests.TicketRequest;
 import api.loteria.loteriaapi.services.TicketService;
 import org.springframework.http.HttpStatus;
-import api.loteria.loteriaapi.services.Mysql.TicketServiceMysql;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
