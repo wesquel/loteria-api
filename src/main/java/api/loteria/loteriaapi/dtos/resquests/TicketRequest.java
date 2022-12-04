@@ -21,7 +21,7 @@ public class TicketRequest {
     private long ticketId;
 
     @NotNull
-    private long bet;
+    private long betId;
     @NotBlank
     private List<Integer> chosenNumbers;
 }
