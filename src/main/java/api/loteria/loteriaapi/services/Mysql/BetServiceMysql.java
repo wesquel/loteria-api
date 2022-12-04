@@ -33,9 +33,7 @@ public class BetServiceMysql implements BetService {
 
     @Override
     public BetResponse save(BetRequest betRequest) {
-        System.out.println(betRequest.getTotalNumbers());
         Bet bet = betMapper.betResquetToEntity(betRequest);
-        System.out.println(bet.getId());
         try {
             betRepository.save(bet);
         }catch(RuntimeException e){
@@ -48,9 +46,6 @@ public class BetServiceMysql implements BetService {
     public BetResponse update(Long id, BetRequest betRequest) {
         Bet bet = verifyIfExist(id);
         updateData(bet, betRequest);
-        System.out.println(bet.getId());
-        System.out.println(bet.getMaxNumbersByUsers());
-        System.out.println(bet.getTotalNumbers());
         betRepository.save(bet);
         return betMapper.entityToBetResponse(bet);
     }
