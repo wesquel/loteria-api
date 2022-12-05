@@ -12,5 +12,4 @@ public interface BetService {
     BetResponse update(Long id, BetRequest betRequest);
     BetResponse delete(Long id);
     BetResponse getBetById(Long id);
-    List<BetResponse> getBets();
 }
