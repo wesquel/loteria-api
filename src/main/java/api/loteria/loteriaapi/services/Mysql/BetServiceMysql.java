@@ -1,5 +1,6 @@
 package api.loteria.loteriaapi.services.Mysql;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,7 +34,11 @@ public class BetServiceMysql implements BetService {
 
     @Override
     public BetResponse save(BetRequest betRequest) {
+        if (betRequest.getTotalNumbers() <= betRequest.getMaxNumbersByUsers()){
+            throw new DataIntegrityViolationException("Total de números deve ser menor que a quantidades por usúario!");
+        }
         Bet bet = betMapper.betResquetToEntity(betRequest);
+        bet.setRaffleNumbers(new ArrayList<Integer>());
         try {
             betRepository.save(bet);
         }catch(RuntimeException e){
@@ -63,18 +68,18 @@ public class BetServiceMysql implements BetService {
         return null;
     }
 
-    @Override
-    public List<BetResponse> getBets() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
     protected Bet verifyIfExist(Long id){
         return betRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(String.format("ID: %s || Não foi encontrado nenhuma entidade para o id fornecido", id)));
     }
 
     protected void updateData(Bet bet, BetRequest betRequest){
-        bet.setMaxNumbersByUsers(betRequest.getMaxNumbersByUsers());
+        if (bet.getMaxNumbersByUsers() < bet.getRaffleNumbers().size())    bet.setRaffleNumbers(betRequest.getRaffleNumbers());
+    }
+
+    private int raffleNumber(){
+
+
+        return 0;
     }
 
 }
