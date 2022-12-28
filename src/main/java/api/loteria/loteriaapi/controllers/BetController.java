@@ -73,4 +73,10 @@ public class BetController {
         return betService.delete(id);
     }
 
+    @GetMapping(value="/{id}")
+    public BetResponse betById(@PathVariable Long id) {
+        return betService.getBetById(id);
+    }
+    
+
 }
