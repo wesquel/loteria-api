@@ -64,8 +64,8 @@ public class BetServiceMysql implements BetService {
 
     @Override
     public BetResponse getBetById(Long id) {
-        // TODO Auto-generated method stub
-        return null;
+        Bet bet = verifyIfExist(id);
+        return betMapper.entityToBetResponse(bet);
     }
 
     protected Bet verifyIfExist(Long id){
