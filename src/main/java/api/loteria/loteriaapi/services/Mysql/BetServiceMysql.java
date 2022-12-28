@@ -77,8 +77,6 @@ public class BetServiceMysql implements BetService {
     }
 
     private int raffleNumber(){
-
-
         return 0;
     }
 

@@ -16,6 +16,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class TicketResponse {
     private Long id;
-    //private Bet bet;
+    private Bet bet;
     private List<Integer> chosenNumbers;
 }

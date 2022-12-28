@@ -38,6 +38,9 @@ public class TicketServiceMysql implements TicketService {
         try {
             Bet bet = verifyIfBetExist(ticketRequest.getBetId());
             ticket.setBet(bet);
+            if (ticket.getChosenNumbers().stream().distinct().collect(Collectors.toList()).size() != ticket.getBet().getMaxNumbersByUsers()){
+                throw new DataIntegrityViolationException("Deve escolher "+ticket.getBet().getMaxNumbersByUsers()+" números distintos!");
+            }
             ticketRepository.save(ticket);
         }catch(RuntimeException e){
             throw new DataIntegrityViolationException(e.getMessage());
